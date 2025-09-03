@@ -52,4 +52,4 @@ jobs:
           app-name: 'cloud-class-krisha'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B744D3E7071A4E0DB72551F9C0F1D5AF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E2CD7F2347114F9AA5746B097E47D43C }}
