@@ -1,0 +1,365 @@
+@model List<ISMTCollege.Models.Faculty>
+@{
+    ViewData["Title"] = "Our Faculty";
+}
+
+<!-- Hero Section -->
+<div class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Meet Our Faculty</h1>
+        <p class="lead">Experienced educators and industry professionals dedicated to your success</p>
+    </div>
+</div>
+
+<!-- Faculty Overview -->
+<div class="container mb-5">
+    <div class="row text-center">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold mb-4">Academic Excellence</h2>
+            <p class="lead text-muted">Our faculty members bring years of experience, research expertise, and industry knowledge to create an exceptional learning environment.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Faculty Members -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">Faculty Members</h2>
+            <p class="lead text-muted">Meet the dedicated professionals who will guide your academic journey</p>
+        </div>
+    </div>
+    
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var faculty in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                @if (!string.IsNullOrEmpty(faculty.ProfileImage))
+                                {
+                                    <img src="@faculty.ProfileImage" alt="@faculty.Name" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 120px; height: 120px;">
+                                        <i class="fas fa-user fa-3x"></i>
+                                    </div>
+                                }
+                            </div>
+                            <h5 class="card-title fw-bold mb-2">@faculty.Name</h5>
+                            <p class="text-primary fw-bold mb-2">@faculty.Designation</p>
+                            <p class="text-muted mb-3">@faculty.Department</p>
+                            @if (!string.IsNullOrEmpty(faculty.Email))
+                            {
+                                <p class="mb-2">
+                                    <i class="fas fa-envelope me-2 text-muted"></i>
+                                    <a href="mailto:@faculty.Email" class="text-decoration-none">@faculty.Email</a>
+                                </p>
+                            }
+                            @if (!string.IsNullOrEmpty(faculty.Phone))
+                            {
+                                <p class="mb-3">
+                                    <i class="fas fa-phone me-2 text-muted"></i>
+                                    <a href="tel:@faculty.Phone" class="text-decoration-none">@faculty.Phone</a>
+                                </p>
+                            }
+                            <span class="badge bg-success">Active</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <!-- Default faculty cards when no data -->
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 120px; height: 120px;">
+                                <i class="fas fa-user fa-3x"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-2">Dr. Sarah Johnson</h5>
+                        <p class="text-primary fw-bold mb-2">Professor & Department Head</p>
+                        <p class="text-muted mb-3">Computer Science</p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:sarah.johnson@ismtcollege.edu" class="text-decoration-none">sarah.johnson@ismtcollege.edu</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+15551234567" class="text-decoration-none">+1 (555) 123-4567</a>
+                        </p>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 120px; height: 120px;">
+                                <i class="fas fa-user fa-3x"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-2">Prof. Michael Chen</h5>
+                        <p class="text-primary fw-bold mb-2">Associate Professor</p>
+                        <p class="text-muted mb-3">Business Administration</p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:michael.chen@ismtcollege.edu" class="text-decoration-none">michael.chen@ismtcollege.edu</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+15551234568" class="text-decoration-none">+1 (555) 123-4568</a>
+                        </p>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 120px; height: 120px;">
+                                <i class="fas fa-user fa-3x"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-2">Dr. Emily Rodriguez</h5>
+                        <p class="text-primary fw-bold mb-2">Assistant Professor</p>
+                        <p class="text-muted mb-3">Engineering</p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:emily.rodriguez@ismtcollege.edu" class="text-decoration-none">emily.rodriguez@ismtcollege.edu</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+15551234569" class="text-decoration-none">+1 (555) 123-4569</a>
+                        </p>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 120px; height: 120px;">
+                                <i class="fas fa-user fa-3x"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-2">Prof. David Thompson</h5>
+                        <p class="text-primary fw-bold mb-2">Senior Lecturer</p>
+                        <p class="text-muted mb-3">Health Sciences</p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:david.thompson@ismtcollege.edu" class="text-decoration-none">david.thompson@ismtcollege.edu</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+15551234570" class="text-decoration-none">+1 (555) 123-4570</a>
+                        </p>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 120px; height: 120px;">
+                                <i class="fas fa-user fa-3x"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-2">Dr. Lisa Park</h5>
+                        <p class="text-primary fw-bold mb-2">Associate Professor</p>
+                        <p class="text-muted mb-3">Arts & Design</p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:lisa.park@ismtcollege.edu" class="text-decoration-none">lisa.park@ismtcollege.edu</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+15551234571" class="text-decoration-none">+1 (555) 123-4571</a>
+                        </p>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 120px; height: 120px;">
+                                <i class="fas fa-user fa-3x"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-2">Prof. Robert Wilson</h5>
+                        <p class="text-primary fw-bold mb-2">Lecturer</p>
+                        <p class="text-muted mb-3">Education</p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:robert.wilson@ismtcollege.edu" class="text-decoration-none">robert.wilson@ismtcollege.edu</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+15551234572" class="text-decoration-none">+1 (555) 123-4572</a>
+                        </p>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Faculty Statistics -->
+<div class="container mb-5">
+    <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <h3 class="fw-bold text-primary">50+</h3>
+                    <p class="text-muted mb-0">Faculty Members</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fas fa-graduation-cap fa-3x text-success mb-3"></i>
+                    <h3 class="fw-bold text-success">85%</h3>
+                    <p class="text-muted mb-0">PhD Holders</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fas fa-award fa-3x text-warning mb-3"></i>
+                    <h3 class="fw-bold text-warning">15+</h3>
+                    <p class="text-muted mb-0">Years Experience</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fas fa-globe fa-3x text-info mb-3"></i>
+                    <h3 class="fw-bold text-info">20+</h3>
+                    <p class="text-muted mb-0">Countries</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Our Faculty Section -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">Why Our Faculty?</h2>
+            <p class="lead text-muted">Discover what makes our teaching staff exceptional</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="text-center">
+                <i class="fas fa-chalkboard-teacher fa-3x text-primary mb-3"></i>
+                <h5 class="fw-bold">Expert Educators</h5>
+                <p class="text-muted">Highly qualified professionals with extensive teaching experience and industry knowledge.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="text-center">
+                <i class="fas fa-microscope fa-3x text-success mb-3"></i>
+                <h5 class="fw-bold">Research Leaders</h5>
+                <p class="text-muted">Active researchers contributing to their fields and bringing cutting-edge knowledge to the classroom.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="text-center">
+                <i class="fas fa-hands-helping fa-3x text-warning mb-3"></i>
+                <h5 class="fw-bold">Student Mentors</h5>
+                <p class="text-muted">Dedicated mentors who provide personalized guidance and support throughout your academic journey.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="text-center">
+                <i class="fas fa-industry fa-3x text-info mb-3"></i>
+                <h5 class="fw-bold">Industry Experience</h5>
+                <p class="text-muted">Real-world experience that bridges the gap between academic theory and practical application.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="text-center">
+                <i class="fas fa-globe-americas fa-3x text-danger mb-3"></i>
+                <h5 class="fw-bold">Global Perspective</h5>
+                <p class="text-muted">International faculty bringing diverse cultural perspectives and global best practices.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="text-center">
+                <i class="fas fa-heart fa-3x text-secondary mb-3"></i>
+                <h5 class="fw-bold">Passionate Teaching</h5>
+                <p class="text-muted">Enthusiastic educators who are passionate about student success and academic excellence.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="bg-light py-5 mb-5">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-4">Interested in Joining Our Faculty?</h2>
+        <p class="lead mb-4">We're always looking for talented educators to join our team</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="@Url.Action("Contact", "Home")" class="btn btn-primary btn-lg px-4">
+                <i class="fas fa-envelope me-2"></i>Contact Us
+            </a>
+            <a href="@Url.Action("About", "Home")" class="btn btn-outline-primary btn-lg px-4">
+                <i class="fas fa-info-circle me-2"></i>Learn More
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.badge {
+    font-size: 0.8rem;
+}
+
+.rounded-circle {
+    border: 3px solid #f8f9fa;
+}
+</style>

@@ -1,0 +1,356 @@
+@model List<ISMTCollege.Models.News>
+@{
+    ViewData["Title"] = "News & Updates";
+}
+
+<!-- Hero Section -->
+<div class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">News & Updates</h1>
+        <p class="lead">Stay informed about campus events, achievements, and important announcements</p>
+    </div>
+</div>
+
+<!-- News Categories -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">News Categories</h2>
+            <p class="lead text-muted">Browse news by category to find what interests you most</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-trophy fa-3x text-warning mb-3"></i>
+                    <h5 class="fw-bold">Achievements</h5>
+                    <p class="text-muted">Student and faculty accomplishments, awards, and recognition</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-calendar-alt fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">Events</h5>
+                    <p class="text-muted">Campus events, workshops, seminars, and cultural activities</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-microscope fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold">Research</h5>
+                    <p class="text-muted">Latest research findings, publications, and academic developments</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-bullhorn fa-3x text-info mb-3"></i>
+                    <h5 class="fw-bold">Announcements</h5>
+                    <p class="text-muted">Important updates, policy changes, and administrative notices</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Latest News Section -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">Latest News</h2>
+            <p class="lead text-muted">Stay updated with the most recent happenings at ISMT College</p>
+        </div>
+    </div>
+    
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var news in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        @if (!string.IsNullOrEmpty(news.FeaturedImage))
+                        {
+                            <img src="@news.FeaturedImage" class="card-img-top" alt="@news.Title" style="height: 200px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="fas fa-newspaper fa-3x text-muted"></i>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-newspaper fa-2x text-info me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">@news.Title</h5>
+                                    <small class="text-muted">@news.PublishedAt.ToString("MMM dd, yyyy")</small>
+                                </div>
+                            </div>
+                            <p class="card-text">@(news.Content.Length > 150 ? news.Content.Substring(0, 150) + "..." : news.Content)</p>
+                            @if (!string.IsNullOrEmpty(news.Category))
+                            {
+                                <span class="badge bg-primary mb-3">@news.Category</span>
+                            }
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>
+                                    @news.PublishedAt.ToString("MMM dd, yyyy")
+                                </small>
+                                <a href="#" class="btn btn-outline-info btn-sm">
+                                    <i class="fas fa-arrow-right me-1"></i>Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <!-- Default news cards when no data -->
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-trophy fa-3x text-warning"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-newspaper fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="card-title mb-1">Student Achievement Award</h5>
+                                <small class="text-muted">Dec 15, 2024</small>
+                            </div>
+                        </div>
+                        <p class="card-text">Congratulations to our students who won the regional science competition. The team demonstrated exceptional creativity and problem-solving skills...</p>
+                        <span class="badge bg-warning mb-3">Achievements</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>
+                                Dec 15, 2024
+                            </small>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-arrow-right me-1"></i>Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-calendar-alt fa-3x text-success"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-newspaper fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="card-title mb-1">Spring Semester Registration</h5>
+                                <small class="text-muted">Dec 10, 2024</small>
+                            </div>
+                        </div>
+                        <p class="card-text">Spring semester registration is now open. Early registration deadline is January 15th. Don't miss out on your preferred courses and schedule...</p>
+                        <span class="badge bg-success mb-3">Announcements</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>
+                                Dec 10, 2024
+                            </small>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-arrow-right me-1"></i>Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-microscope fa-3x text-primary"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-newspaper fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="card-title mb-1">New Research Lab Opening</h5>
+                                <small class="text-muted">Dec 05, 2024</small>
+                            </div>
+                        </div>
+                        <p class="card-text">Our new state-of-the-art research laboratory is now open for students and faculty. The facility includes advanced equipment for cutting-edge research...</p>
+                        <span class="badge bg-primary mb-3">Research</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>
+                                Dec 05, 2024
+                            </small>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-arrow-right me-1"></i>Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-users fa-3x text-info"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-newspaper fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="card-title mb-1">International Conference</h5>
+                                <small class="text-muted">Nov 28, 2024</small>
+                            </div>
+                        </div>
+                        <p class="card-text">ISMT College is proud to host the International Conference on Educational Technology. Join us for three days of insightful presentations...</p>
+                        <span class="badge bg-info mb-3">Events</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>
+                                Nov 28, 2024
+                            </small>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-arrow-right me-1"></i>Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-graduation-cap fa-3x text-secondary"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-newspaper fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="card-title mb-1">Alumni Success Story</h5>
+                                <small class="text-muted">Nov 20, 2024</small>
+                            </div>
+                        </div>
+                        <p class="card-text">Meet Sarah Chen, our 2020 Computer Science graduate who recently launched her own tech startup. Her journey from ISMT College to entrepreneurship...</p>
+                        <span class="badge bg-secondary mb-3">Alumni</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>
+                                Nov 20, 2024
+                            </small>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-arrow-right me-1"></i>Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-award fa-3x text-danger"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-newspaper fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="card-title mb-1">Faculty Recognition</h5>
+                                <small class="text-muted">Nov 15, 2024</small>
+                            </div>
+                        </div>
+                        <p class="card-text">Dr. Michael Johnson from the Engineering Department has been awarded the prestigious National Teaching Excellence Award for his innovative...</p>
+                        <span class="badge bg-danger mb-3">Faculty</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>
+                                Nov 15, 2024
+                            </small>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-arrow-right me-1"></i>Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Newsletter Subscription -->
+<div class="bg-light py-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h3 class="fw-bold mb-3">Stay Updated</h3>
+                <p class="lead text-muted mb-4">Subscribe to our newsletter to receive the latest news and updates directly in your inbox</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Enter your email address" aria-label="Email address">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-paper-plane me-2"></i>Subscribe
+                            </button>
+                        </div>
+                        <small class="text-muted">We respect your privacy. Unsubscribe at any time.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-4">Have News to Share?</h2>
+        <p class="lead mb-4">Students, faculty, and staff are encouraged to submit news and announcements</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="@Url.Action("Contact", "Home")" class="btn btn-light btn-lg px-4">
+                <i class="fas fa-envelope me-2"></i>Submit News
+            </a>
+            <a href="@Url.Action("About", "Home")" class="btn btn-outline-light btn-lg px-4">
+                <i class="fas fa-info-circle me-2"></i>Learn More
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.badge {
+    font-size: 0.8rem;
+}
+
+.card-img-top {
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+}
+</style>

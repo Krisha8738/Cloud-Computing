@@ -1,0 +1,360 @@
+@model ISMTCollege.Models.ContactForm
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<!-- Hero Section -->
+<div class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Contact Us</h1>
+        <p class="lead">Get in touch with us. We'd love to hear from you!</p>
+    </div>
+</div>
+
+<!-- Contact Information -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">Get in Touch</h2>
+            <p class="lead text-muted">We're here to help and answer any questions you might have</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold">Visit Us</h5>
+                    <p class="text-muted mb-0">123 Education Street<br>Knowledge City, KC 12345<br>United States</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-phone fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">Call Us</h5>
+                    <p class="text-muted mb-0">
+                        <a href="tel:+15551234567" class="text-decoration-none">+1 (555) 123-4567</a><br>
+                        <a href="tel:+15551234568" class="text-decoration-none">+1 (555) 123-4568</a><br>
+                        Mon-Fri: 8:00 AM - 6:00 PM
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-envelope fa-3x text-warning mb-3"></i>
+                    <h5 class="fw-bold">Email Us</h5>
+                    <p class="text-muted mb-0">
+                        <a href="mailto:info@ismtcollege.edu" class="text-decoration-none">info@ismtcollege.edu</a><br>
+                        <a href="mailto:admissions@ismtcollege.edu" class="text-decoration-none">admissions@ismtcollege.edu</a><br>
+                        <a href="mailto:support@ismtcollege.edu" class="text-decoration-none">support@ismtcollege.edu</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Form Section -->
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h3 class="mb-0"><i class="fas fa-envelope me-2"></i>Send us a Message</h3>
+                </div>
+                <div class="card-body p-5">
+                    <form asp-action="Contact" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Name" class="form-label fw-bold">Full Name <span class="text-danger">*</span></label>
+                                <input asp-for="Name" class="form-control" placeholder="Enter your full name">
+                                <span asp-validation-for="Name" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Email" class="form-label fw-bold">Email Address <span class="text-danger">*</span></label>
+                                <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email address">
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Subject" class="form-label fw-bold">Subject <span class="text-danger">*</span></label>
+                            <input asp-for="Subject" class="form-control" placeholder="What is this about?">
+                            <span asp-validation-for="Subject" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label asp-for="Message" class="form-label fw-bold">Message <span class="text-danger">*</span></label>
+                            <textarea asp-for="Message" class="form-control" rows="5" placeholder="Tell us more about your inquiry..."></textarea>
+                            <span asp-validation-for="Message" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Department Contacts -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">Department Contacts</h2>
+            <p class="lead text-muted">Get in touch with specific departments for specialized inquiries</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold">Admissions</h5>
+                    <p class="text-muted mb-2">General admissions and enrollment</p>
+                    <p class="mb-2">
+                        <i class="fas fa-envelope me-2 text-muted"></i>
+                        <a href="mailto:admissions@ismtcollege.edu" class="text-decoration-none">admissions@ismtcollege.edu</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-phone me-2 text-muted"></i>
+                        <a href="tel:+15551234567" class="text-decoration-none">+1 (555) 123-4567</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-book fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">Academic Affairs</h5>
+                    <p class="text-muted mb-2">Course information and academic support</p>
+                    <p class="mb-2">
+                        <i class="fas fa-envelope me-2 text-muted"></i>
+                        <a href="mailto:academic@ismtcollege.edu" class="text-decoration-none">academic@ismtcollege.edu</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-phone me-2 text-muted"></i>
+                        <a href="tel:+15551234568" class="text-decoration-none">+1 (555) 123-4568</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-dollar-sign fa-3x text-warning mb-3"></i>
+                    <h5 class="fw-bold">Financial Aid</h5>
+                    <p class="text-muted mb-2">Scholarships and financial assistance</p>
+                    <p class="mb-2">
+                        <i class="fas fa-envelope me-2 text-muted"></i>
+                        <a href="mailto:financialaid@ismtcollege.edu" class="text-decoration-none">financialaid@ismtcollege.edu</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-phone me-2 text-muted"></i>
+                        <a href="tel:+15551234569" class="text-decoration-none">+1 (555) 123-4569</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-users fa-3x text-info mb-3"></i>
+                    <h5 class="fw-bold">Student Services</h5>
+                    <p class="text-muted mb-2">Student life and support services</p>
+                    <p class="mb-2">
+                        <i class="fas fa-envelope me-2 text-muted"></i>
+                        <a href="mailto:studentservices@ismtcollege.edu" class="text-decoration-none">studentservices@ismtcollege.edu</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-phone me-2 text-muted"></i>
+                        <a href="tel:+15551234570" class="text-decoration-none">+1 (555) 123-4570</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Campus Map -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">Find Us</h2>
+            <p class="lead text-muted">Visit our beautiful campus and experience the ISMT College difference</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="card border-0 shadow">
+                <div class="card-body p-0">
+                    <!-- Placeholder for Google Maps or campus map -->
+                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 400px;">
+                        <div class="text-center">
+                            <i class="fas fa-map fa-4x text-muted mb-3"></i>
+                            <h5 class="text-muted">Interactive Campus Map</h5>
+                            <p class="text-muted">Map integration would go here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Campus Location</h5>
+                    <p class="text-muted mb-3">Our campus is located in the heart of Knowledge City, easily accessible by public transportation and car.</p>
+                    
+                    <h6 class="fw-bold mb-2">Getting Here:</h6>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-bus me-2"></i>Bus Routes: 15, 23, 45</li>
+                        <li><i class="fas fa-train me-2"></i>Train Station: Knowledge City Central</li>
+                        <li><i class="fas fa-car me-2"></i>Free parking available</li>
+                    </ul>
+                    
+                    <h6 class="fw-bold mb-2 mt-3">Campus Hours:</h6>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-clock me-2"></i>Monday - Friday: 7:00 AM - 10:00 PM</li>
+                        <li><i class="fas fa-clock me-2"></i>Saturday: 8:00 AM - 6:00 PM</li>
+                        <li><i class="fas fa-clock me-2"></i>Sunday: 9:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold">Frequently Asked Questions</h2>
+            <p class="lead text-muted">Find quick answers to common questions</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                            How do I apply for admission?
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can apply online through our website or contact our admissions office for assistance. The application process includes submitting required documents, transcripts, and completing an application form.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            What are the tuition fees?
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Tuition fees vary by program and can range from $8,500 to $13,500 per year. We offer various financial aid options including scholarships, grants, and payment plans.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            Do you offer online courses?
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer a variety of online and hybrid courses. Many of our programs can be completed partially or fully online, providing flexibility for working professionals.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                            How can I schedule a campus tour?
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can schedule a campus tour by contacting our admissions office or filling out the tour request form on our website. Tours are available Monday through Friday.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="bg-light py-5 mb-5">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-4">Ready to Get Started?</h2>
+        <p class="lead mb-4">Take the first step towards your academic and professional success</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="@Url.Action("Courses", "Home")" class="btn btn-primary btn-lg px-4">
+                <i class="fas fa-book me-2"></i>Explore Programs
+            </a>
+            <a href="@Url.Action("About", "Home")" class="btn btn-outline-primary btn-lg px-4">
+                <i class="fas fa-info-circle me-2"></i>Learn More
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e7f1ff;
+    color: #0d6efd;
+}
+
+.accordion-button:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+</style>
