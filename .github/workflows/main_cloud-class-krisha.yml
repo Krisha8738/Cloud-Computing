@@ -21,7 +21,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.x'
+          dotnet-version: '9.x'
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
@@ -52,4 +52,4 @@ jobs:
           app-name: 'cloud-class-krisha'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E2CD7F2347114F9AA5746B097E47D43C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0FDF9E4D638A47AB9F2E4381FC3617B4 }}
